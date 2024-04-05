@@ -27,13 +27,17 @@ public class CompoundsController implements CompoundsApi {
 
     @Override
     public ResponseEntity<CompoundDto> getCompoundByName(String name) {
-        return ResponseEntity.ok(compoundsService.getCompoundByName(name));
+        CompoundDto compoundDto = compoundsService.getCompoundByName(name);
+        if(compoundDto!=null){
+            return ResponseEntity.ok(compoundDto);
+        }else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @Override
     public ResponseEntity<Void> removeAnimalFromCompound(String animalName, String compoundName) {
         compoundsService.removeAnimalFromCompound(animalName, compoundName);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok().build();
     }
-
 }

@@ -5,6 +5,7 @@ import com.hsbremen.mkss.lab.common.model.Compound;
 import de.hsbremen.mkss.restservice.model.AnimalDto;
 import de.hsbremen.mkss.restservice.model.CompoundDto;
 import de.hsbremen.mkss.restservice.model.SpeciesDto;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
+@AllArgsConstructor
 public class CompoundMapper {
 
     private AnimalMapper animalMapper;

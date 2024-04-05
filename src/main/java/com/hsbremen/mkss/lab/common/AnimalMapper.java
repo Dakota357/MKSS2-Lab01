@@ -10,12 +10,12 @@ import org.springframework.stereotype.Component;
 public class AnimalMapper {
     public AnimalDto mapToAnimalDto(Animal animal) {
         AnimalDto animalDto = new AnimalDto(animal.getName(),animal.getAge());
-        animalDto.setSpecies(SpeciesDto.fromValue(animal.getSpecies().toString()));
+        animalDto.setSpecies(SpeciesDto.fromValue(animal.getSpecies().toString().toLowerCase()));
         return animalDto;
     }
 
     public Animal mapToAnimal(AnimalDto animalDto) {
-        return new Animal(animalDto.getName(), Species.valueOf(animalDto.getSpecies().toString()),animalDto.getAge());
+        return new Animal(animalDto.getName(), Species.valueOf(animalDto.getSpecies().toString().toLowerCase()),animalDto.getAge());
     }
 
 }

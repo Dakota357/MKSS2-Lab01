@@ -18,12 +18,16 @@ public class AnimalsService {
     private AnimalsDao animalsDao;
     private AnimalMapper animalMapper;
     public AnimalDto getAnimalByName(String name) {
-        return animalMapper.mapToAnimalDto(animalsDao.getAnimalByName(name));
+        Animal result = animalsDao.getAnimalByName(name);
+        if(result!=null){
+            return animalMapper.mapToAnimalDto(result);
+        }
+        else return null;
     }
 
 
     public List<AnimalDto> getAnimalsBySpecies(SpeciesDto speciesDto) {
-        Species species = Species.valueOf(speciesDto.toString());
+        Species species = Species.valueOf(speciesDto.name());
         List<AnimalDto> animalDtos = new ArrayList<>();
         animalsDao.getAnimalsBySpecies(species).forEach(e ->{
             animalDtos.add(animalMapper.mapToAnimalDto(e));
