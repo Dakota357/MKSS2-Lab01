@@ -1,0 +1,157 @@
+openapi: 3.0.0
+info:
+  title: Zoo Microservice API
+  description: REST API for managing compounds and animals in an online zoo
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+    description: Local server
+paths:
+  /compounds:
+    get:
+      operationId: getAllCompounds
+      summary: Get all compounds
+      responses:
+        '200':
+          description: A list of compounds
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Compound'
+  /compounds/{name}:
+    get:
+      summary: Get a compound by name
+      operationId: getCompoundByName
+      parameters:
+        - name: name
+          in: path
+          required: true
+          description: Name of the compound
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A compound
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Compound'
+  /animals/{name}:
+    get:
+      operationId: getAnimalByName
+      summary: Get an animal by name
+      parameters:
+        - name: name
+          in: path
+          required: true
+          description: Name of the animal
+          schema:
+            type: string
+      responses:
+        '200':
+          description: An animal
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Animal'
+  /animals/{species}:
+    get:
+      operationId: getAnimalsBySpecies
+      summary: Get all animals of a specific type
+      parameters:
+        - name: species
+          in: path
+          required: true
+          description: Species of the animal
+          schema:
+            $ref: '#/components/schemas/Species'
+      responses:
+        '200':
+          description: A list of animals
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Animal'
+  /compounds/{compoundName}/animals/{animalName}:
+    post:
+      operationId: addAnimalToCompound
+      summary: Add an animal to a compound
+      parameters:
+        - name: animalName
+          in: path
+          required: true
+          description: Name of the animal
+          schema:
+            type: string
+        - name: compoundName
+          in: path
+          required: true
+          description: Name of the compound
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+    delete:
+      operationId: removeAnimalFromCompound
+      summary: remove an animal to a compound
+      parameters:
+        - name: animalName
+          in: path
+          required: true
+          description: Name of the animal
+          schema:
+            type: string
+        - name: compoundName
+          in: path
+          required: true
+          description: Name of the compound
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+
+components:
+  schemas:
+    Species:
+      type: string
+      enum:
+        - mammals
+        - birds
+        - reptiles
+        - amphibians
+        - fish
+        - insects
+        - invertebrates
+    Compound:
+      type: object
+      properties:
+        name:
+          type: string
+        size:
+          type: number
+        animals:
+          type: array
+          items:
+            $ref: '#/components/schemas/Animal'
+      required:
+        - name
+        - size
+    Animal:
+      type: object
+      properties:
+        name:
+          type: string
+        species:
+          $ref: '#/components/schemas/Species'
+        age:
+          type: integer
+      required:
+        - name
+        - type
+        - age
