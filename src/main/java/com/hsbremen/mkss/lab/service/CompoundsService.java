@@ -19,6 +19,8 @@ public class CompoundsService {
     private CompoundMapper compoundMapper;
     private CompoundsDao compoundsDao;
     private AnimalsDao animalsDao;
+    private HateoasService hateoasService;
+
     public void addAnimalToCompound(String animalName, String compoundName) {
         compoundsDao.addAnimalToCompound(animalName,compoundName);
     }
@@ -28,7 +30,9 @@ public class CompoundsService {
         List<Compound> buff = compoundsDao.getAllCompounds();
         List<CompoundDto> results = new ArrayList<>();
         buff.forEach(e-> {
-            results.add(compoundMapper.mapToCompoundDto(e));
+            CompoundDto compoundDto = compoundMapper.mapToCompoundDto(e);
+            hateoasService.addLinksToCompound(compoundDto);
+            results.add(compoundDto);
         });
         return results;
     }
@@ -37,7 +41,9 @@ public class CompoundsService {
     public CompoundDto getCompoundByName(String name) {
        Compound compound = compoundsDao.getCompoundByName(name);
        if(compound != null){
-          return compoundMapper.mapToCompoundDto(compound);
+           CompoundDto compoundDto = compoundMapper.mapToCompoundDto(compound);
+           hateoasService.addLinksToCompound(compoundDto);
+           return compoundDto;
        }
        else {
            return null;
@@ -48,5 +54,7 @@ public class CompoundsService {
     public void removeAnimalFromCompound(String animalName, String compoundName) {
         compoundsDao.removeAnimalFromCompound(animalName,compoundName);
     }
+
+
 
 }

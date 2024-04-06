@@ -6,14 +6,13 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.hateoas.RepresentationModel;
 
 @AllArgsConstructor
 @Data
 @Entity
 @Table(name="Animal")
 @NoArgsConstructor
-public class Animal extends RepresentationModel<Animal> {
+public class Animal{
 
     @Id
     private String name;

@@ -17,10 +17,14 @@ import java.util.List;
 public class AnimalsService {
     private AnimalsDao animalsDao;
     private AnimalMapper animalMapper;
+    private HateoasService hateoasService;
+
     public AnimalDto getAnimalByName(String name) {
         Animal result = animalsDao.getAnimalByName(name);
         if(result!=null){
-            return animalMapper.mapToAnimalDto(result);
+            AnimalDto animalDto = animalMapper.mapToAnimalDto(result);
+            hateoasService.addLinksToAnimal(animalDto);
+            return animalDto;
         }
         else return null;
     }
@@ -30,7 +34,9 @@ public class AnimalsService {
         Species species = Species.valueOf(speciesDto.name());
         List<AnimalDto> animalDtos = new ArrayList<>();
         animalsDao.getAnimalsBySpecies(species).forEach(e ->{
-            animalDtos.add(animalMapper.mapToAnimalDto(e));
+            AnimalDto animalDto = animalMapper.mapToAnimalDto(e);
+            hateoasService.addLinksToAnimal(animalDto);
+            animalDtos.add(animalDto);
         });
         return animalDtos;
     }

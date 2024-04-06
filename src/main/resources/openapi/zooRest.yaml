@@ -77,7 +77,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/Animal'
   /compounds/{compoundName}/animals/{animalName}:
-    post:
+    put:
       operationId: addAnimalToCompound
       summary: Add an animal to a compound
       parameters:
@@ -118,6 +118,17 @@ paths:
 
 components:
   schemas:
+    Link:
+      type: object
+      properties:
+        href:
+          type: string
+          format: uri
+        rel:
+          type: string
+          description: Relation to current resource
+        type:
+          type: string
     Species:
       type: string
       enum:
@@ -136,6 +147,11 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Animal'
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/Link'
+          description: HATEOAS-links to other resourcen
       required:
         - name
         - size
@@ -148,7 +164,13 @@ components:
           $ref: '#/components/schemas/Species'
         age:
           type: integer
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/Link'
+          description: HATEOAS-links to other resourcen
       required:
         - name
         - type
         - age
+
