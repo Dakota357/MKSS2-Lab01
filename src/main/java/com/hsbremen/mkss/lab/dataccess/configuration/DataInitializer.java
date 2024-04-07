@@ -103,6 +103,10 @@ public class DataInitializer {
 
         animalRepository.saveAll(amphibians);
         compoundsRepository.save(amphibiansCompound);
+
+        Animal animal31 = new Animal("UnitTest",Species.BIRDS,2);
+        animalRepository.save(animal31);
+
         return 1;
     }
 }

@@ -2,7 +2,6 @@ package com.hsbremen.mkss.lab.dataccess;
 
 import com.hsbremen.mkss.lab.common.model.Animal;
 import com.hsbremen.mkss.lab.common.model.Compound;
-import de.hsbremen.mkss.restservice.model.CompoundDto;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -20,8 +19,15 @@ public class CompoundsDao {
         Optional<Compound> compound = compoundsRepository.findById(compoundName);
         Optional<Animal> animal = animalRepository.findById(animalName);
         if(animal.isPresent() && compound.isPresent()){
+            Compound oldCompound = compoundsRepository.findByAnimalListContaining(animal.get());
+            if(oldCompound != null){
+                oldCompound.getAnimalList().remove(animal.get());
+                compoundsRepository.save(oldCompound);
+            }
             compound.get().getAnimalList().add(animal.get());
             compoundsRepository.save(compound.get());
+
+
             //animalRepo.save?
         }
     }

@@ -17,7 +17,7 @@ public class CompoundsController implements CompoundsApi {
     @Override
     public ResponseEntity<Void> addAnimalToCompound(String animalName, String compoundName) {
         compoundsService.addAnimalToCompound(animalName,compoundName);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok().build();
     }
 
     @Override
