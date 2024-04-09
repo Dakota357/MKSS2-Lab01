@@ -23,7 +23,7 @@ public class AnimalsService {
         Animal result = animalsDao.getAnimalByName(name);
         if(result!=null){
             AnimalDto animalDto = animalMapper.mapToAnimalDto(result);
-            hateoasService.addLinksToAnimal(animalDto);
+            hateoasService.addLinksToAnimal(animalDto,null);
             return animalDto;
         }
         else return null;
@@ -35,7 +35,7 @@ public class AnimalsService {
         List<AnimalDto> animalDtos = new ArrayList<>();
         animalsDao.getAnimalsBySpecies(species).forEach(e ->{
             AnimalDto animalDto = animalMapper.mapToAnimalDto(e);
-            hateoasService.addLinksToAnimal(animalDto);
+            hateoasService.addLinksToAnimal(animalDto,null);
             animalDtos.add(animalDto);
         });
         return animalDtos;

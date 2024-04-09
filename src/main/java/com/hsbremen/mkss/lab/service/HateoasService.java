@@ -3,7 +3,6 @@ package com.hsbremen.mkss.lab.service;
 import de.hsbremen.mkss.restservice.model.AnimalDto;
 import de.hsbremen.mkss.restservice.model.CompoundDto;
 import de.hsbremen.mkss.restservice.model.LinkDto;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.net.URI;
@@ -24,10 +23,10 @@ public class HateoasService {
         self.setType("GET");
         compoundDto.addLinksItem(self);
 
-        compoundDto.getAnimals().forEach(this::addLinksToAnimal);
+        compoundDto.getAnimals().forEach(e-> addLinksToAnimal(e,compoundDto));
     }
 
-    public void addLinksToAnimal(AnimalDto animalDto){
+    public void addLinksToAnimal(AnimalDto animalDto, CompoundDto compoundDto){
         LinkDto all = new LinkDto();
         all.setHref(URI.create("/animals"));
         all.setRel("_all");
@@ -45,6 +44,15 @@ public class HateoasService {
         species.setRel("_allOfSameSpecies");
         species.setType("GET");
         animalDto.addLinksItem(species);
+
+        if(compoundDto!= null){
+            LinkDto delete = new LinkDto();
+            delete.setHref(URI.create("/compounds/" +compoundDto.getName() + "/animals/" + animalDto.getName()));
+            delete.setRel("_removeFromCompound");
+            delete.setType("DELETE");
+            animalDto.addLinksItem(delete);
+        }
+
 
     }
 }
