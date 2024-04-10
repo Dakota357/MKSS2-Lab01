@@ -39,20 +39,5 @@ public class HateoasService {
         self.setType("GET");
         animalDto.addLinksItem(self);
 
-        LinkDto species = new LinkDto();
-        species.setHref(URI.create("/animals/species/" + animalDto.getSpecies()));
-        species.setRel("_allOfSameSpecies");
-        species.setType("GET");
-        animalDto.addLinksItem(species);
-
-        if(compoundDto!= null){
-            LinkDto delete = new LinkDto();
-            delete.setHref(URI.create("/compounds/" +compoundDto.getName() + "/animals/" + animalDto.getName()));
-            delete.setRel("_removeFromCompound");
-            delete.setType("DELETE");
-            animalDto.addLinksItem(delete);
-        }
-
-
     }
 }
