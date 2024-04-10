@@ -2,8 +2,9 @@ package com.hsbremen.mkss.lab.common;
 
 import com.hsbremen.mkss.lab.common.model.Animal;
 import com.hsbremen.mkss.lab.common.model.Species;
-import de.hsbremen.mkss.restservice.model.AnimalDto;
-import de.hsbremen.mkss.restservice.model.SpeciesDto;
+
+import com.hsbremen.mkss.lab.model.AnimalDto;
+import com.hsbremen.mkss.lab.model.SpeciesDto;
 import org.springframework.stereotype.Component;
 
 @Component

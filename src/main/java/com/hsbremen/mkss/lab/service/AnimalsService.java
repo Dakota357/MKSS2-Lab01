@@ -4,8 +4,8 @@ import com.hsbremen.mkss.lab.common.AnimalMapper;
 import com.hsbremen.mkss.lab.dataccess.AnimalsDao;
 import com.hsbremen.mkss.lab.common.model.Animal;
 import com.hsbremen.mkss.lab.common.model.Species;
-import de.hsbremen.mkss.restservice.model.AnimalDto;
-import de.hsbremen.mkss.restservice.model.SpeciesDto;
+import com.hsbremen.mkss.lab.model.AnimalDto;
+import com.hsbremen.mkss.lab.model.SpeciesDto;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

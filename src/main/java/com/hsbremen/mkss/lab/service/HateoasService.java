@@ -1,8 +1,8 @@
 package com.hsbremen.mkss.lab.service;
 
-import de.hsbremen.mkss.restservice.model.AnimalDto;
-import de.hsbremen.mkss.restservice.model.CompoundDto;
-import de.hsbremen.mkss.restservice.model.LinkDto;
+import com.hsbremen.mkss.lab.model.AnimalDto;
+import com.hsbremen.mkss.lab.model.CompoundDto;
+import com.hsbremen.mkss.lab.model.LinkDto;
 import org.springframework.stereotype.Component;
 
 import java.net.URI;

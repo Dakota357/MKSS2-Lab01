@@ -1,11 +1,10 @@
 package com.hsbremen.mkss.lab.service;
 
 import com.hsbremen.mkss.lab.common.CompoundMapper;
-import com.hsbremen.mkss.lab.common.model.Animal;
 import com.hsbremen.mkss.lab.common.model.Compound;
 import com.hsbremen.mkss.lab.dataccess.AnimalsDao;
 import com.hsbremen.mkss.lab.dataccess.CompoundsDao;
-import de.hsbremen.mkss.restservice.model.CompoundDto;
+import com.hsbremen.mkss.lab.model.CompoundDto;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

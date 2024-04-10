@@ -130,23 +130,9 @@
 							<generateApiTests>false</generateApiTests>
 							<generateModelTests>false</generateModelTests>
 							<configOptions>
-
-
-								<typeMappings>
-									<mapping>
-										<type>java.time.LocalDate</type>
-										<annotations>
-											<annotation>@com.fasterxml.jackson.databind.annotation.JsonSerialize(using = LocalDateSerializer.class)</annotation>
-										</annotations>
-									</mapping>
-									<!-- Füge weitere Typzuordnungen nach Bedarf hinzu -->
-								</typeMappings>
-
-
-
-								<basePackage>de.hsbremen.mkss.restservice</basePackage>
-								<modelPackage>de.hsbremen.mkss.restservice.model</modelPackage>
-								<apiPackage>de.hsbremen.mkss.restservice.api</apiPackage>
+								<basePackage>com.hsbremen.mkss.lab</basePackage>
+								<modelPackage>com.hsbremen.mkss.lab.model</modelPackage>
+								<apiPackage>com.hsbremen.mkss.lab.api</apiPackage>
 								<dateLibary>java11</dateLibary>
 								<skipDefaultInterface>true</skipDefaultInterface>
 								<interfaceOnly>true</interfaceOnly>

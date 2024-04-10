@@ -1,18 +1,16 @@
 package com.hsbremen.mkss.lab.controller;
 
-import com.hsbremen.mkss.lab.common.model.Animal;
-import com.hsbremen.mkss.lab.common.model.Species;
-import com.hsbremen.mkss.lab.service.AnimalsService;
-import de.hsbremen.mkss.restservice.api.AnimalsApi;
+import com.hsbremen.mkss.lab.api.AnimalsApi;
 
-import de.hsbremen.mkss.restservice.model.AnimalDto;
-import de.hsbremen.mkss.restservice.model.CompoundDto;
-import de.hsbremen.mkss.restservice.model.SpeciesDto;
+import com.hsbremen.mkss.lab.model.AnimalDto;
+import com.hsbremen.mkss.lab.model.SpeciesDto;
+import com.hsbremen.mkss.lab.service.AnimalsService;
+
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 @RestController

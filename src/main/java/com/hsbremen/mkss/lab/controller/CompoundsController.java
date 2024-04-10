@@ -1,8 +1,8 @@
 package com.hsbremen.mkss.lab.controller;
 
+import com.hsbremen.mkss.lab.api.CompoundsApi;
+import com.hsbremen.mkss.lab.model.CompoundDto;
 import com.hsbremen.mkss.lab.service.CompoundsService;
-import de.hsbremen.mkss.restservice.api.CompoundsApi;
-import de.hsbremen.mkss.restservice.model.CompoundDto;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
