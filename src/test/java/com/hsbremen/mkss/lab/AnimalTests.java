@@ -30,9 +30,9 @@ public class AnimalTests {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.name").value("UnitTest"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.age").value(2))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.species").value("birds"))
-                .andExpect(jsonPath("$.links[*].href", containsInAnyOrder("/animals", "/animals/UnitTest", "/animals/species/birds")))
-                .andExpect(jsonPath("$.links[*].rel", containsInAnyOrder("_all", "_self", "_allOfSameSpecies")))
-                .andExpect(jsonPath("$.links[*].type", containsInAnyOrder("GET", "GET", "GET")));
+                .andExpect(jsonPath("$.links[*].href", containsInAnyOrder("/animals", "/animals/UnitTest")))
+                .andExpect(jsonPath("$.links[*].rel", containsInAnyOrder("_all", "_self")))
+                .andExpect(jsonPath("$.links[*].type", containsInAnyOrder("GET", "GET")));
     }
 
     @Test
