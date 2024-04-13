@@ -26,7 +26,7 @@ public class SpeciesTests {
 
     @Test
     public void testGetEndpointSpecies200() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/animals/species/birds")
+        mockMvc.perform(MockMvcRequestBuilders.get("/animals?species=birds")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
@@ -36,7 +36,7 @@ public class SpeciesTests {
 
     @Test
     public void testGetEndpointSpecies400() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/animals/species/ebs")
+        mockMvc.perform(MockMvcRequestBuilders.get("/animals?species=ebs")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isBadRequest());
     }

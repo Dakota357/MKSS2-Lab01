@@ -29,12 +29,14 @@ public class AnimalsController implements AnimalsApi {
     }
 
     @Override
-    public ResponseEntity<List<AnimalDto>> getAnimalsBySpecies(String species) {
-            SpeciesDto speciesDto = null;
+    public ResponseEntity<List<AnimalDto>> getAnimals(String species) {
+        SpeciesDto speciesDto = null;
         try {
-            speciesDto = SpeciesDto.fromValue(species);
+            if(species!= null){
+                speciesDto = SpeciesDto.fromValue(species);
+            }
         }
-        catch (Exception e){
+        catch (Exception ignored){
 
         }
         if(speciesDto != null){
@@ -44,7 +46,12 @@ public class AnimalsController implements AnimalsApi {
             }else {
                 return ResponseEntity.noContent().build();
             }
-        } else return ResponseEntity.badRequest().build();
+        } else {
+            List<AnimalDto> animals = animalsService.getAllAnimals();
+            return ResponseEntity.ok(animals);
+        }
     }
+
+
 
 }

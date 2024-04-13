@@ -40,4 +40,14 @@ public class AnimalsService {
         });
         return animalDtos;
     }
+
+    public List<AnimalDto> getAllAnimals(){
+        List<AnimalDto> animalDtos = new ArrayList<>();
+        animalsDao.getAllAnimals().forEach(e ->{
+            AnimalDto animalDto = animalMapper.mapToAnimalDto(e);
+            hateoasService.addLinksToAnimal(animalDto,null);
+            animalDtos.add(animalDto);
+        });
+        return animalDtos;
+    }
 }

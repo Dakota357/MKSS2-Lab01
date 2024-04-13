@@ -38,6 +38,26 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Compound'
+  /animals:
+    get:
+      operationId: getAnimals
+      summary: Get all animals or all animals of one species
+      parameters:
+        - name: species
+          in: query
+          required: false
+          description: Species of the animal
+          schema:
+            type: string
+      responses:
+        '200':
+          description: An animal
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Animal'
   /animals/{name}:
     get:
       operationId: getAnimalByName
@@ -46,7 +66,7 @@ paths:
         - name: name
           in: path
           required: true
-          description: Name of the animal
+          description: name of the animal
           schema:
             type: string
       responses:
@@ -56,26 +76,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Animal'
-  /animals/species/{species}:
-    get:
-      operationId: getAnimalsBySpecies
-      summary: Get all animals of a specific type
-      parameters:
-        - name: species
-          in: path
-          required: true
-          description: Species of the animal
-          schema:
-            type: string
-      responses:
-        '200':
-          description: A list of animals
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Animal'
   /compounds/{compoundName}/animals/{animalName}:
     put:
       operationId: addAnimalToCompound
