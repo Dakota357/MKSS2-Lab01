@@ -47,11 +47,12 @@ paths:
           in: query
           required: false
           description: Species of the animal
+          example: birds
           schema:
             type: string
       responses:
         '200':
-          description: An animal
+          description: A List of Animals
           content:
             application/json:
               schema:

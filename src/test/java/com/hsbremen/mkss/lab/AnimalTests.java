@@ -22,6 +22,9 @@ public class AnimalTests {
     private MockMvc mockMvc;
 
     @Test
+    /**
+     * Ein Tier per Name holen können
+     */
     public void testGetEndpointAnimal200() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/animals/UnitTest")
                         .contentType(MediaType.APPLICATION_JSON))

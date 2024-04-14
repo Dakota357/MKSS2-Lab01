@@ -32,16 +32,20 @@ public class AssignAnimalTests {
                 .andExpect(jsonPath("$[*].name", not(hasItem("UnitTest"))));
     }
 
-
-
     @Test
+    /**
+     * Ein Tier einem Gehege hinzufügen
+     */
     public void testPutAnimalIntoCompound() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.put("/compounds/birds/animals/UnitTest")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
-    //Assert UnitTest ist in birds
+
     @Test
+    /**
+     * Ein Tier aus einem Gehege entfernen
+     */
     public void testRemoveAnimalFromCompound() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.delete("/compounds/birds/animals/UnitTest")
                         .contentType(MediaType.APPLICATION_JSON))

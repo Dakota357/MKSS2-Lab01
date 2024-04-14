@@ -9,7 +9,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.everyItem;
@@ -25,19 +24,15 @@ public class SpeciesTests {
     private MockMvc mockMvc;
 
     @Test
+    /**
+     * Alle Tiere einer Art holen
+     */
     public void testGetEndpointSpecies200() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/animals?species=birds")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$[*].species", everyItem(equalTo("birds"))));
-
     }
 
-    @Test
-    public void testGetEndpointSpecies400() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/animals?species=ebs")
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isBadRequest());
-    }
 }

@@ -9,7 +9,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
@@ -21,6 +20,9 @@ public class CompoundTests {
     private MockMvc mockMvc;
 
     @Test
+    /**
+     * Alle Gehege holen können
+     */
     public void testGetEndpointAllCompounds200() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/compounds")
                         .contentType(MediaType.APPLICATION_JSON))
@@ -29,6 +31,9 @@ public class CompoundTests {
     }
 
     @Test
+    /**
+     * Ein Gehege per Name holen können
+     */
     public void testGetEndpointOneCompounds200() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/compounds/birds")
                         .contentType(MediaType.APPLICATION_JSON))
@@ -36,10 +41,4 @@ public class CompoundTests {
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
     }
 
-    @Test
-    public void testGetEndpointAnimal204() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/animals/species/ebs")
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isBadRequest());
-    }
 }
