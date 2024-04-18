@@ -27,8 +27,6 @@ public class CompoundsDao {
             compound.get().getAnimalList().add(animal.get());
             compoundsRepository.save(compound.get());
 
-
-            //animalRepo.save?
         }
     }
 
